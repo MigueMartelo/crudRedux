@@ -4,6 +4,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { mostrarProductos } from '../actions/productosActions';
 
+//Componentes
+import Producto from './Producto';
+
 class Productos extends Component {
 
     componentDidMount() {
@@ -11,8 +14,24 @@ class Productos extends Component {
     }
 
     render() {
+        const {productos} = this.props;
+        console.log(productos);
         return (
-            <h1>Productos</h1>
+            <React.Fragment>
+                <h2 className="text-center my-5">Listado de Productos</h2>
+                <div className="row justify-content-center">
+                    <div className="col-md-8">
+                        <ul>
+                            {productos.map(producto => (
+                                <Producto
+                                    key={producto.id}
+                                    info={producto}
+                                />
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+            </React.Fragment>
         );
     }
 }
