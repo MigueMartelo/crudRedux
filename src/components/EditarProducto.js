@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 // Redux
 import {connect} from 'react-redux';
-import {mostrarProducto} from '../actions/productosActions';
+import {mostrarProducto, editarProducto} from '../actions/productosActions';
 
 class EditarProducto extends Component {
     
@@ -44,14 +44,18 @@ class EditarProducto extends Component {
         
         this.setState({error:false});
 
+        // Tomar el ID
+        const {id} = this.props.match.params;
+
         // Crear el objeto
         const infoProducto = {
+            id,
             nombre,
             precio
         }
 
-        // Crear el nuevo producto
-        this.props.agregarProducto(infoProducto);
+        // Actualizar el producto
+        this.props.editarProducto(infoProducto);
 
         // Redireccionar
         this.props.history.push('/');
@@ -94,4 +98,4 @@ class EditarProducto extends Component {
 const mapStateToProps = state => ({
     producto: state.productos.producto
 });
-export default connect(mapStateToProps, {mostrarProducto})(EditarProducto);
+export default connect(mapStateToProps, {mostrarProducto, editarProducto})(EditarProducto);

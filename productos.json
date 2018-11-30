@@ -3,7 +3,7 @@
     {
       "id": 0,
       "nombre": "Pastel de Vainilla ",
-      "precio": "100"
+      "precio": "60"
     },
     {
       "nombre": "Pastel de Zanahoria",
@@ -11,9 +11,9 @@
       "id": 4
     },
     {
+      "id": 5,
       "nombre": "Pastel de Chocolate",
-      "precio": "60",
-      "id": 5
+      "precio": "55"
     },
     {
       "nombre": "Pastel de Fresa",
