@@ -34,8 +34,8 @@ class NuevoProducto extends Component {
 
         // Crear el objeto
         const infoProducto = {
-            nombre: this.state.nombre,
-            precio: this.state.precio
+            nombre,
+            precio
         }
 
         // Crear el nuevo producto
