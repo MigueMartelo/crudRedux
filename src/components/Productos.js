@@ -15,7 +15,7 @@ class Productos extends Component {
 
     render() {
         const {productos} = this.props;
-        console.log(productos);
+        // console.log(productos);
         return (
             <React.Fragment>
                 <h2 className="text-center my-5">Listado de Productos</h2>
