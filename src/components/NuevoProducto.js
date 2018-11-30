@@ -17,9 +17,21 @@ class NuevoProducto extends Component {
     nuevoProducto = e => {
         e.preventDefault();
         
+        const {nombre, precio} = this.state;
+
+        if(nombre === '' || precio === '') {
+            this.setState({
+                error: true
+            });
+            return;
+        }
+        
+        this.setState({error:false});
+
     }
 
     render() {
+        const {error} = this.state;
         return (
             <div className="row justify-content-center mt-5">
                 <div className="col-md-8">
@@ -37,7 +49,12 @@ class NuevoProducto extends Component {
                                 </div>
                                 <button type="submit" className="btn btn-primary font-weight-bold text-uppercase d-block w-100">Agregar</button>
                             </form>
-
+                            {error ? 
+                                <div className="font-wight-bold alert alert-danger text-center mt-4">
+                                    Todos los campos son obligatorios
+                                </div>
+                                : ''
+                            }
                         </div>
                     </div>
                 </div>
