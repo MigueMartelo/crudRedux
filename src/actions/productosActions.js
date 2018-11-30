@@ -3,7 +3,7 @@ import { MOSTRAR_PRODUCTOS, ELIMINAR_PRODUCTO, AGREGAR_PRODUCTO, MOSTRAR_PRODUCT
 import axios from 'axios';
 
 export const mostrarProductos = () => async dispatch => {
-    const respuesta = await axios.get('http://localhost:5000/productos');
+    const respuesta = await axios.get('https://my-json-server.typicode.com/MigueMartelo/productos/productos');
     dispatch({
         type: MOSTRAR_PRODUCTOS,
         payload: respuesta.data
@@ -11,7 +11,7 @@ export const mostrarProductos = () => async dispatch => {
 }
 
 export const mostrarProducto = id => async dispatch => {
-    const respuesta = await axios.get(`http://localhost:5000/productos/${id}`);
+    const respuesta = await axios.get(`https://my-json-server.typicode.com/MigueMartelo/productos/productos/${id}`);
     dispatch({
         type: MOSTRAR_PRODUCTO,
         payload: respuesta.data
@@ -19,7 +19,7 @@ export const mostrarProducto = id => async dispatch => {
 }
 
 export const borrarProducto = id => async dispatch => {
-    await axios.delete(`http://localhost:5000/productos/${id}`);
+    await axios.delete(`https://my-json-server.typicode.com/MigueMartelo/productos/productos/${id}`);
     dispatch({
         type: ELIMINAR_PRODUCTO,
         payload: id
@@ -27,7 +27,7 @@ export const borrarProducto = id => async dispatch => {
 }
 
 export const agregarProducto = producto => async dispatch => {
-    const respuesta = await axios.post(`http://localhost:5000/productos/`, producto);
+    const respuesta = await axios.post(`https://my-json-server.typicode.com/MigueMartelo/productos/productos/`, producto);
     dispatch({
         type: AGREGAR_PRODUCTO,
         payload: respuesta.data
@@ -35,7 +35,7 @@ export const agregarProducto = producto => async dispatch => {
 }
 
 export const editarProducto = producto => async dispatch => {
-    const respuesta = await axios.put(`http://localhost:5000/productos/${producto.id}`, producto);
+    const respuesta = await axios.put(`https://my-json-server.typicode.com/MigueMartelo/productos/productos/${producto.id}`, producto);
     dispatch({
         type: EDITAR_PRODUCTO,
         payload: respuesta.data
