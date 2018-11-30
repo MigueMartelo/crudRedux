@@ -11,6 +11,18 @@ class EditarProducto extends Component {
         precio: '',
         error: false
     }
+    componentDidMount() {
+        const {id} = this.props.match.params;
+        this.props.mostrarProducto(id);
+    }
+    componentWillReceiveProps(nextProps, nextState){
+        const {nombre, precio} = nextProps.producto;
+
+        this.setState({
+            nombre,
+            precio
+        });
+    }
 
     nombreProducto = e => {
         this.setState({nombre: e.target.value});
@@ -39,7 +51,7 @@ class EditarProducto extends Component {
         }
 
         // Crear el nuevo producto
-        this.props.(infoProducto);
+        this.props.agregarProducto(infoProducto);
 
         // Redireccionar
         this.props.history.push('/');
@@ -47,7 +59,7 @@ class EditarProducto extends Component {
     }
 
     render() {
-        const {error} = this.state;
+        const {nombre, precio, error} = this.state;
         return (
             <div className="row justify-content-center mt-5">
                 <div className="col-md-8">
@@ -57,13 +69,13 @@ class EditarProducto extends Component {
                             <form onSubmit={this.actualizarProducto}>
                                 <div className="form-group">
                                     <label>Titulo</label>
-                                    <input onChange={this.nombreProducto} type="text" className="form-control" placeholder="Titulo" />
+                                    <input defaultValue={nombre} onChange={this.nombreProducto} type="text" className="form-control" placeholder="Titulo" />
                                 </div>
                                 <div className="form-group">
                                     <label>Precio del Producto</label>
-                                    <input onChange={this.precioProducto} type="text" className="form-control" placeholder="Precio" />
+                                    <input defaultValue={precio} onChange={this.precioProducto} type="text" className="form-control" placeholder="Precio" />
                                 </div>
-                                <button type="submit" className="btn btn-primary font-weight-bold text-uppercase d-block w-100">Agregar</button>
+                                <button type="submit" className="btn btn-primary font-weight-bold text-uppercase d-block w-100">Guardar Cambios</button>
                             </form>
                             {error ? 
                                 <div className="font-wight-bold alert alert-danger text-center mt-4">
