@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 
+// Redux
+import {connect} from 'react-redux';
+import {agregarProducto} from '../actions/productosActions';
+
 class NuevoProducto extends Component {
     
     state = {
@@ -27,6 +31,18 @@ class NuevoProducto extends Component {
         }
         
         this.setState({error:false});
+
+        // Crear el objeto
+        const infoProducto = {
+            nombre: this.state.nombre,
+            precio: this.state.precio
+        }
+
+        // Crear el nuevo producto
+        this.props.agregarProducto(infoProducto);
+
+        // Redireccionar
+        this.props.history.push('/');
 
     }
 
@@ -63,4 +79,4 @@ class NuevoProducto extends Component {
     }
 }
 
-export default NuevoProducto;
+export default connect(null, {agregarProducto})(NuevoProducto);
